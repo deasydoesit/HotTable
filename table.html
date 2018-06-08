@@ -38,15 +38,15 @@
             var columnWait = $("<div>").attr("class", "column has-background-warning");
             if (i < 5) {
                 var seated = columnSeated;
-                $(seated).attr("id", "seated-" + i);
-                $(seated).append("<h2>" + data[i].name + "</h2>");
+                $(seated).attr("id", "seated-" + (i + 1));
+                $(seated).append("<h2> Table " + (i + 1) + " | " + data[i].name + "</h2>");
                 $(columns).append(seated);
                 $(".seated").append(columns);
             } 
             if (i > 5) {
                 var wait = columnWait;
                 $(wait).attr("id", "wait-" + i);
-                $(wait).append("<h2>" + data[i].name + "</h2>");
+                $(wait).append("<h2> Wailist Number " + (i - 5) + " | " + data[i].name + "</h2>");
                 $(columns).append(wait);
                 $(".waitlist").append(columns);
             }
