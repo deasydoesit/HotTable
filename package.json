@@ -1,0 +1,24 @@
+{
+  "name": "hot-table",
+  "version": "1.0.0",
+  "description": "Restaurant reseveration app",
+  "main": "hot-table.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deasydoesit/HotTable.git"
+  },
+  "author": "Darwin Rinderer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deasydoesit/HotTable/issues"
+  },
+  "homepage": "https://github.com/deasydoesit/HotTable#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "path": "^0.12.7"
+  }
+}

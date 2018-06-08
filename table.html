@@ -23,31 +23,35 @@
             </div>
         </div>
     </section>
-    <section class="tables">
-        <div class="columns">
-            <div class="column has-background-info">
-                First column
-            </div>
-        </div>
-        <div class="columns">
-            <div class="column has-background-info">
-                First column
-            </div>
-        </div>
+    <section class="seated">
+        <!-- Seated section goes here -->
     </section>
     <section class="waitlist">
-            <div class="columns">
-                <div class="column has-background-warning">
-                    First column
-                </div>
-            </div>
-            <div class="columns">
-                <div class="column has-background-warning">
-                    First column
-                </div>
-            </div>
+        <!-- Waitlist goes here -->
     </section>
-
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $.get("/api/reservations", function(data) {
+          for (var i = 0; i < data.length; i++) {
+            var columns = $("<div>").attr("class", "columns");
+            var columnSeated = $("<div>").attr("class", "column has-background-info");
+            var columnWait = $("<div>").attr("class", "column has-background-warning");
+            if (i < 5) {
+                var seated = columnSeated;
+                $(seated).attr("id", "seated-" + i);
+                $(seated).append("<h2>" + data[i].name + "</h2>");
+                $(columns).append(seated);
+                $(".seated").append(columns);
+            } 
+            if (i > 5) {
+                var wait = columnWait;
+                $(wait).attr("id", "wait-" + i);
+                $(wait).append("<h2>" + data[i].name + "</h2>");
+                $(columns).append(wait);
+                $(".waitlist").append(columns);
+            }
+          }
+        });
+      </script>
 </body>
 </html>

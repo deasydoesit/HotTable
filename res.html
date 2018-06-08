@@ -28,30 +28,24 @@
             <div class="field">
                 <label class="label">Name</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="e.g Alex Smith">
+                    <input id="name" class="input" type="text" placeholder="e.g., Alex Smith">
                 </div>
             </div>
             <div class="field">
                 <label class="label">Email</label>
                 <div class="control">
-                    <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com">
+                    <input id="email" class="input" type="email" placeholder="e.g., alexsmith@gmail.com">
                 </div>
             </div>
             <div class="field">
-                <label class="label">Name</label>
+                <label class="label">Phone Number</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="e.g Alex Smith">
-                </div>
-            </div>
-            <div class="field">
-                <label class="label">Email</label>
-                <div class="control">
-                    <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com">
+                    <input id="phone-number" class="input" type="text" placeholder="e.g., 123-456-7890">
                 </div>
             </div>
             <div class="field is-grouped">
                 <div class="control">
-                    <button class="button is-link">Submit</button>
+                    <button id="submit-res-info" class="button is-link">Submit</button>
                 </div>
                 <div class="control">
                     <button class="button is-text">Cancel</button>
@@ -60,5 +54,20 @@
         </div>
     </section>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $("#submit-res-info").on("click", function() {
+            event.preventDefault(); //what exactly does this do?
+            var newReservation = {
+              name: $("#name").val().trim(),
+              email: $("#email").val().trim(),
+              phoneNumber: $("#phone-number").val().trim()
+            }
+            $.post("/api/reservation", newReservation)
+                .then(function(data) {
+                console.log(data);
+                alert("Creating reservation...");
+            });
+        });
+      </script>
 </body>
 </html>
